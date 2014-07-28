@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Current Weather</title>
+	</head>
+	<body>
+		<p id="demo"></p>
+			
+			<script>
+			var x = document.getElementById("demo");
+			
+			function getLocation() {
+			    if (navigator.geolocation) {
+			        navigator.geolocation.getCurrentPosition(showPosition);
+			    } else { 
+			        x.innerHTML = "Geolocation is not supported by this browser.";
+			    }
+			}
+			
+			function showPosition(position) {
+			    x.innerHTML="Latitude: " + position.coords.latitude + 
+			    "<br>Longitude: " + position.coords.longitude;	
+			    
+			    
+			    var url1 = "http://forecast.io/embed/#lat="
+			    var url2 = position.coords.latitude ;
+			    var url3 = "&lon=";
+			    var url4 = position.coords.longitude;
+			    var url5 = "&name=Your Current Location";
+			    
+			    var url = url1+url2+url3+url4+url5;
+			
+			        console.log("Url 4 is...");
+			        console.log(url4);
+			
+			    console.log(url);
+			    
+			    console.log('<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src=url> </iframe>');
+			    
+			    var total1 = '<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" ';
+			    var total2 = 'src="';
+			    var total3 = url;
+			    var total4 = '">';
+			    var total5 = '</iframe>';
+			    
+			    var complete = total1+total2+total3+total4+total5;
+			    
+			                      document.write(complete);
+			
+			         
+			}
+			
+			getLocation();
+		</script>
+	</body>
+</html>
